@@ -8,10 +8,12 @@ import "@fontsource/onest/cyrillic-600.css";
 import "@fontsource/onest/400.css";
 import "@fontsource/onest/500.css";
 import "@fontsource/onest/600.css";
+import "lenis/dist/lenis.css";
 import "./globals.css";
 import { brand } from "@/brand.config";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
+import { SmoothScroll } from "@/components/premium/SmoothScroll";
 import { StoreHydrator } from "@/components/StoreHydrator";
 
 export const metadata: Metadata = {
@@ -47,8 +49,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html lang="uk" style={brandVariables}>
       <body className="flex min-h-dvh flex-col">
         <StoreHydrator />
+        <SmoothScroll />
         <Header />
-        <main className="flex-1">{children}</main>
+        <main className="flex-1 pt-[72px]">{children}</main>
         <Footer />
       </body>
     </html>

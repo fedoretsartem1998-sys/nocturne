@@ -170,3 +170,169 @@ body {
 input[type="range"] {
   accent-color: var(--brand-accent);
 }
+
+/* =====================================================================
+   Premium layer
+   ===================================================================== */
+
+/* film grain over everything: kills the flat "digital" look of dark screens */
+body::after {
+  content: "";
+  position: fixed;
+  inset: -50%;
+  z-index: 60;
+  pointer-events: none;
+  opacity: 0.07;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.9 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation: grain 900ms steps(6) infinite;
+}
+
+@keyframes grain {
+  0% { transform: translate(0, 0); }
+  20% { transform: translate(-3%, 2%); }
+  40% { transform: translate(2%, -3%); }
+  60% { transform: translate(-2%, -1%); }
+  80% { transform: translate(3%, 3%); }
+  100% { transform: translate(0, 0); }
+}
+
+/* hairline that fades out at both ends instead of a hard border */
+.hairline {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--brand-line) 18%, var(--brand-line) 82%, transparent);
+}
+
+/* button sheen: a slow band of light crosses on hover */
+.btn-sheen {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+.btn-sheen::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(110deg, transparent 30%, rgb(255 255 255 / 0.45) 50%, transparent 70%);
+  transform: translateX(-120%);
+  transition: transform 900ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.btn-sheen:hover::after {
+  transform: translateX(120%);
+}
+
+/* image curtain: the photo is uncovered from the bottom and settles from a slight zoom.
+   The clip sits on the child, not the observed box: Chrome never reports a fully clipped
+   target as intersecting, so clipping the box itself would keep it hidden forever. */
+.reveal-img > * {
+  clip-path: inset(100% 0 0 0);
+  transform: scale(1.18);
+  transition:
+    clip-path 1300ms cubic-bezier(0.7, 0, 0.2, 1),
+    transform 1800ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+.reveal-img.is-visible > * {
+  clip-path: inset(0 0 0 0);
+  transform: none;
+}
+
+/* headline words rise from behind a mask, one after another */
+.word-mask {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+  padding-bottom: 0.08em;
+  margin-bottom: -0.08em;
+}
+.word-mask > span {
+  display: inline-block;
+  transform: translateY(105%);
+  animation: word-rise 1100ms cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  animation-delay: var(--word-delay, 0ms);
+}
+@keyframes word-rise {
+  to { transform: none; }
+}
+
+.fade-up {
+  opacity: 0;
+  transform: translateY(14px);
+  animation: fade-up 1000ms cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  animation-delay: var(--fade-delay, 0ms);
+}
+@keyframes fade-up {
+  to { opacity: 1; transform: none; }
+}
+
+/* marquee of flower names */
+.marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 60s linear infinite;
+}
+.marquee-wrap:hover .marquee {
+  animation-play-state: paused;
+}
+@keyframes marquee {
+  to { transform: translateX(-50%); }
+}
+.text-outline {
+  color: transparent;
+  -webkit-text-stroke: 1px color-mix(in oklab, var(--brand-moon) 45%, transparent);
+}
+
+/* rotating circular caption around the moon mark */
+.spin-slow {
+  animation: spin 28s linear infinite;
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* hero photo slow drift, like a camera breathing */
+.hero-drift {
+  animation: hero-drift 24s ease-in-out infinite alternate;
+}
+@keyframes hero-drift {
+  from { transform: scale(1.04) translate3d(0, 0, 0); }
+  to { transform: scale(1.1) translate3d(-1.5%, -1%, 0); }
+}
+
+/* scroll cue */
+.scroll-cue {
+  position: relative;
+  overflow: hidden;
+}
+.scroll-cue::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--brand-accent);
+  transform: translateY(-100%);
+  animation: scroll-cue 2400ms cubic-bezier(0.7, 0, 0.2, 1) infinite;
+}
+@keyframes scroll-cue {
+  60%, 100% { transform: translateY(100%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body::after,
+  .marquee,
+  .spin-slow,
+  .hero-drift,
+  .scroll-cue::after {
+    animation: none;
+  }
+  .reveal-img > * {
+    clip-path: none;
+    transform: none;
+    transition: none;
+  }
+  .word-mask > span,
+  .fade-up {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}

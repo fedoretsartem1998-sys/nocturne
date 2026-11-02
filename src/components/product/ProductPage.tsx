@@ -10,7 +10,7 @@ import { formatPrice, useLocalize, useT } from "@/lib/hooks";
 import type { SizeId } from "@/lib/types";
 import { useShop } from "@/store/shop";
 import { FavoriteButton } from "../FavoriteButton";
-import { CheckIcon } from "../icons";
+import { CheckIcon, PlusIcon } from "../icons";
 import { artFrame, ProductArt } from "../ProductArt";
 import { ProductCard } from "../ProductCard";
 import { buttonGhost, buttonPrimary } from "../ui";
@@ -70,7 +70,7 @@ export const ProductPage = () => {
   };
 
   return (
-    <div className="mx-auto max-w-7xl px-4 pt-8 sm:px-6 lg:px-10">
+    <div className="mx-auto max-w-[1400px] px-4 pb-24 pt-8 sm:px-6 lg:px-10 lg:pb-0">
       <nav className="text-sm text-mist" aria-label="Breadcrumbs">
         <Link href="/catalog" className="hover:text-moon">
           {t.nav.catalog}
@@ -144,6 +144,17 @@ export const ProductPage = () => {
             {t.product.deliveryNote} <span className="tabular text-moon">{formatPrice(brand.freeDeliveryFrom)}</span>.
           </p>
 
+          <ul className="mt-8 grid gap-3 rounded-[24px] border border-moon/10 bg-plum/50 p-5 sm:grid-cols-3 sm:gap-4">
+            {t.premium.guarantees.map((item) => (
+              <li key={item} className="flex items-start gap-3 text-sm leading-snug text-moon/85">
+                <span className="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-accent/15 text-accent">
+                  <CheckIcon size={13} />
+                </span>
+                {item}
+              </li>
+            ))}
+          </ul>
+
           <section className="mt-12 border-t border-line pt-6">
             <div className="flex items-baseline justify-between">
               <h2 className="font-sans! text-sm text-mist">{t.product.composition}</h2>
@@ -165,8 +176,38 @@ export const ProductPage = () => {
               })}
             </ul>
           </section>
+
+          <details className="group mt-6 border-y border-line">
+            <summary className="flex cursor-pointer list-none items-center justify-between py-5 text-moon [&::-webkit-details-marker]:hidden">
+              {t.premium.careTitle}
+              <span className="grid h-8 w-8 place-items-center rounded-full border border-line transition-transform duration-300 group-open:rotate-45">
+                <PlusIcon size={14} />
+              </span>
+            </summary>
+            <ol className="space-y-3 pb-6">
+              {t.premium.careSteps.map((step, index) => (
+                <li key={step} className="flex gap-4 text-mist">
+                  <span className="tabular font-display text-accent">{index + 1}</span>
+                  {step}
+                </li>
+              ))}
+            </ol>
+          </details>
         </div>
       </div>
+
+      {product.available && (
+        <div className="fixed inset-x-0 bottom-0 z-30 flex items-center justify-between gap-4 border-t border-moon/10 bg-ink/90 px-4 py-3 backdrop-blur-xl lg:hidden">
+          <div className="min-w-0">
+            <p className="truncate text-sm text-mist">{name}</p>
+            <p className="tabular text-lg">{formatPrice(price)}</p>
+          </div>
+          <button type="button" className={buttonPrimary} onClick={handleAdd}>
+            {justAdded ? <CheckIcon /> : null}
+            {justAdded ? t.product.added : t.product.addToCart}
+          </button>
+        </div>
+      )}
 
       {similar.length > 0 && (
         <section className="mt-28">
