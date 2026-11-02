@@ -4,7 +4,7 @@ import Link from "next/link";
 import { formatPrice, useLocalize, useT } from "@/lib/hooks";
 import type { Product } from "@/lib/types";
 import { FavoriteButton } from "./FavoriteButton";
-import { ProductArt } from "./ProductArt";
+import { artFrame, ProductArt } from "./ProductArt";
 
 export const ProductCard = ({ product }: { product: Product }) => {
   const t = useT();
@@ -14,9 +14,9 @@ export const ProductCard = ({ product }: { product: Product }) => {
   return (
     <article className="group relative">
       <Link href={`/bouquet/${product.id}`} className="block">
-        <div className="relative aspect-[4/5] overflow-hidden rounded-[28px] bg-plum transition-colors duration-300 group-hover:bg-plum-raised">
-          <div className="absolute inset-x-[6%] bottom-0 top-[4%] transition-transform duration-500 ease-out group-hover:scale-[1.03]">
-            <ProductArt product={product} title={name} />
+        <div className="relative aspect-square overflow-hidden rounded-[28px] bg-plum transition-colors duration-300 group-hover:bg-plum-raised">
+          <div className={`absolute ${artFrame(product, "inset-x-[6%] bottom-0 top-[4%]")} transition-transform duration-500 ease-out group-hover:scale-[1.03]`}>
+            <ProductArt product={product} title={name} sizes="(max-width: 1024px) 50vw, 25vw" />
           </div>
           {product.badge && (
             <span

@@ -15,6 +15,13 @@ import { Header } from "@/components/Header";
 import { StoreHydrator } from "@/components/StoreHydrator";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://nocturne-snowy-five.vercel.app"),
+  openGraph: {
+    type: "website",
+    locale: "uk_UA",
+    siteName: brand.name.uk,
+    images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: `${brand.name.uk}: ${brand.tagline.uk}` }],
+  },
   title: { default: `${brand.name.uk} — ${brand.tagline.uk}`, template: `%s · ${brand.name.uk}` },
   description: "Квіткова майстерня з доставкою букетів по місту за дві години. Каталог, конструктор букета, листівка від руки.",
 };

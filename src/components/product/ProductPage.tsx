@@ -11,7 +11,7 @@ import type { SizeId } from "@/lib/types";
 import { useShop } from "@/store/shop";
 import { FavoriteButton } from "../FavoriteButton";
 import { CheckIcon } from "../icons";
-import { ProductArt } from "../ProductArt";
+import { artFrame, ProductArt } from "../ProductArt";
 import { ProductCard } from "../ProductCard";
 import { buttonGhost, buttonPrimary } from "../ui";
 
@@ -80,9 +80,13 @@ export const ProductPage = () => {
       </nav>
 
       <div className="mt-6 grid gap-10 lg:grid-cols-[1.1fr_1fr] lg:gap-16">
-        <div className="relative aspect-[4/5] overflow-hidden rounded-[36px] bg-plum lg:sticky lg:top-24 lg:self-start">
-          <div className="absolute inset-x-[8%] bottom-0 top-[5%]">
-            <ProductArt key={product.id} product={product} title={name} bloom />
+        <div
+          className={`relative overflow-hidden rounded-[36px] bg-plum lg:sticky lg:top-24 lg:self-start ${
+            product.image ? "aspect-[4/3]" : "aspect-[4/5]"
+          }`}
+        >
+          <div className={`absolute ${artFrame(product, "inset-x-[8%] bottom-0 top-[5%]")}`}>
+            <ProductArt key={product.id} product={product} title={name} bloom sizes="(max-width: 1024px) 100vw, 55vw" priority />
           </div>
         </div>
 

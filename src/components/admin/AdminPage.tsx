@@ -9,7 +9,7 @@ import type { Product } from "@/lib/types";
 import { useShop } from "@/store/shop";
 import { CartLineArt } from "../cart/CartLineArt";
 import { MoonMark, PlusIcon } from "../icons";
-import { ProductArt } from "../ProductArt";
+import { artFrame, ProductArt } from "../ProductArt";
 import { buttonGhost, buttonPrimary, chipClass, fieldClass } from "../ui";
 import { ProductEditor } from "./ProductEditor";
 
@@ -108,8 +108,8 @@ const ProductsTab = () => {
           return (
             <li key={product.id} className="flex flex-wrap items-center gap-4 py-4">
               <div className="relative h-20 w-16 shrink-0 overflow-hidden rounded-xl bg-plum">
-                <div className="absolute inset-[6%]">
-                  <ProductArt product={product} title={name} />
+                <div className={`absolute ${artFrame(product, "inset-[6%]")}`}>
+                  <ProductArt product={product} title={name} sizes="80px" />
                 </div>
               </div>
               <div className="min-w-[160px] flex-1">

@@ -1,29 +1,17 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { brand } from "@/brand.config";
 import { OCCASIONS } from "@/lib/catalog";
 import { formatPrice, useLocalize, useT } from "@/lib/hooks";
-import type { Stem } from "@/lib/types";
 import { useShop } from "@/store/shop";
-import { Bouquet } from "../bouquet/Bouquet";
 import { ProductCard } from "../ProductCard";
 import { Reveal } from "../Reveal";
 import { buttonPrimary } from "../ui";
 import { Hero } from "./Hero";
 
-const BUILDER_PREVIEW: Stem[] = [
-  { kind: "eucalyptus", color: "#8FA898" },
-  { kind: "eucalyptus", color: "#8FA898" },
-  { kind: "ranunculus", color: "#F0A385" },
-  { kind: "ranunculus", color: "#F0A385" },
-  { kind: "ranunculus", color: "#F0A385" },
-  { kind: "tulip", color: "#F7EFE6" },
-  { kind: "tulip", color: "#F7EFE6" },
-  { kind: "tulip", color: "#F7EFE6" },
-  { kind: "daisy", color: "#FBF8F2" },
-  { kind: "daisy", color: "#FBF8F2" },
-];
+const STEP_PHOTOS = ["/site/step-1.jpg", "/site/step-2.jpg", "/site/step-3.jpg", "/site/step-4.jpg"];
 
 const Section = ({ id, children, className = "" }: { id?: string; children: React.ReactNode; className?: string }) => (
   <section id={id} className={`mx-auto max-w-7xl scroll-mt-24 px-4 sm:px-6 lg:px-10 ${className}`}>
@@ -84,7 +72,7 @@ export const HomePage = () => {
       </Section>
 
       <Section className="mt-32">
-        <Reveal className="grid items-center gap-8 overflow-hidden rounded-[40px] bg-plum px-6 py-10 sm:px-12 md:grid-cols-[1fr_0.8fr] md:py-6">
+        <Reveal className="grid items-center gap-8 overflow-hidden rounded-[40px] bg-plum px-6 py-10 sm:px-12 md:grid-cols-[1fr_1fr] md:py-10">
           <div className="max-w-xl">
             <h2 className="text-[clamp(2rem,3.6vw,3rem)] leading-tight">{t.home.builderTitle}</h2>
             <p className="mt-5 text-lg leading-relaxed text-mist">{t.home.builderText}</p>
@@ -92,8 +80,8 @@ export const HomePage = () => {
               {t.home.builderCta}
             </Link>
           </div>
-          <div className="mx-auto w-full max-w-[340px]">
-            <Bouquet stems={BUILDER_PREVIEW} wrap="kraft" ribbon="#9DB08A" title={t.home.builderTitle} />
+          <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[28px]">
+            <Image src="/site/builder.jpg" alt={t.home.builderPhotoAlt} fill sizes="(max-width: 768px) 100vw, 45vw" className="object-cover" />
           </div>
         </Reveal>
       </Section>
@@ -102,10 +90,13 @@ export const HomePage = () => {
         <Reveal>
           <h2 className="text-[clamp(2rem,3.6vw,3rem)] leading-tight">{t.home.stepsTitle}</h2>
         </Reveal>
-        <ol className="mt-12 grid gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
+        <ol className="mt-12 grid grid-cols-2 gap-x-4 gap-y-12 sm:gap-x-8 lg:grid-cols-4">
           {t.home.steps.map((step, index) => (
-            <Reveal as="li" key={step.title} delay={index * 90} className="border-t border-line pt-6">
-              <span className="tabular font-display text-4xl text-accent">{index + 1}</span>
+            <Reveal as="li" key={step.title} delay={index * 90}>
+              <div className="relative aspect-[3/4] overflow-hidden rounded-[24px] bg-plum">
+                <Image src={STEP_PHOTOS[index] ?? STEP_PHOTOS[0]} alt={step.title} fill sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw" className="object-cover" />
+              </div>
+              <span className="tabular mt-6 block font-display text-4xl text-accent">{index + 1}</span>
               <h3 className="mt-4 font-sans! text-lg font-medium!">{step.title}</h3>
               <p className="mt-2 leading-relaxed text-mist">{step.text}</p>
             </Reveal>

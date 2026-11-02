@@ -6,7 +6,7 @@ import { groupStems, type CompositionLine } from "@/lib/composition";
 import { useLocalize, useT } from "@/lib/hooks";
 import type { Badge, ColorTag, FlowerKind, Product, Stem, WrapId } from "@/lib/types";
 import { CloseIcon, MinusIcon, PlusIcon } from "../icons";
-import { ProductArt } from "../ProductArt";
+import { artFrame, ProductArt } from "../ProductArt";
 import { buttonGhost, buttonPrimary, chipClass, fieldClass } from "../ui";
 
 type ProductEditorProps = {
@@ -283,8 +283,8 @@ export const ProductEditor = ({ product, onSave, onClose }: ProductEditorProps) 
 
           <div className="md:sticky md:top-0 md:self-start">
             <div className="relative aspect-[4/5] overflow-hidden rounded-[28px] bg-plum">
-              <div className="absolute inset-x-[6%] bottom-0 top-[4%]">
-                <ProductArt product={preview} title={draft.name.uk} />
+              <div className={`absolute ${artFrame(preview, "inset-x-[6%] bottom-0 top-[4%]")}`}>
+                <ProductArt product={preview} title={draft.name.uk} sizes="300px" />
               </div>
             </div>
           </div>

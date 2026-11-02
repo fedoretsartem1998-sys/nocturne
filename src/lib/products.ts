@@ -6,6 +6,7 @@ const stems = (kind: FlowerKind, color: string, count: number): Stem[] =>
 export const SEED_PRODUCTS: Product[] = [
   {
     id: "midnight-peony",
+    image: "/bouquets/midnight-peony.jpg",
     name: { uk: "Опівнічна півонія", en: "Midnight Peony" },
     description: {
       uk: "Пишні рожеві півонії з гілочками евкаліпта. Букет, який пахне червнем навіть у листопаді.",
@@ -22,6 +23,7 @@ export const SEED_PRODUCTS: Product[] = [
   },
   {
     id: "velvet-serenade",
+    image: "/bouquets/velvet-serenade.jpg",
     name: { uk: "Оксамитова серенада", en: "Velvet Serenade" },
     description: {
       uk: "Пʼятнадцять червоних троянд і хмарка гіпсофіли. Класика, яку неможливо не зрозуміти.",
@@ -38,6 +40,7 @@ export const SEED_PRODUCTS: Product[] = [
   },
   {
     id: "first-light",
+    image: "/bouquets/first-light.jpg",
     name: { uk: "Перше світло", en: "First Light" },
     description: {
       uk: "Кремові троянди, білі ранункулюси й ромашки. Тихий, світлий букет для ранку після довгої ночі.",
@@ -59,6 +62,7 @@ export const SEED_PRODUCTS: Product[] = [
   },
   {
     id: "lilac-hour",
+    image: "/bouquets/lilac-hour.jpg",
     name: { uk: "Бузкова година", en: "Lilac Hour" },
     description: {
       uk: "Лавандова гортензія, бузкові тюльпани й живі колоски лаванди. Пахне так, як виглядає.",
@@ -78,6 +82,7 @@ export const SEED_PRODUCTS: Product[] = [
   },
   {
     id: "garden-after-rain",
+    image: "/bouquets/garden-after-rain.jpg",
     name: { uk: "Сад після дощу", en: "Garden After Rain" },
     description: {
       uk: "Мікс сезонних квітів: коралові ранункулюси, персикові троянди, блакитна гортензія.",
@@ -100,6 +105,7 @@ export const SEED_PRODUCTS: Product[] = [
   },
   {
     id: "spring-letter",
+    image: "/bouquets/spring-letter.jpg",
     name: { uk: "Весняний лист", en: "Spring Letter" },
     description: {
       uk: "Пʼятнадцять жовтих і білих тюльпанів. Найпростіший спосіб сказати «я думаю про тебе».",
@@ -115,6 +121,7 @@ export const SEED_PRODUCTS: Product[] = [
   },
   {
     id: "plum-sonata",
+    image: "/bouquets/plum-sonata.jpg",
     name: { uk: "Сливова соната", en: "Plum Sonata" },
     description: {
       uk: "Глибокі сливові ранункулюси, малинові півонії та лаванда. Драматичний букет для особливого вечора.",
@@ -134,6 +141,7 @@ export const SEED_PRODUCTS: Product[] = [
   },
   {
     id: "white-vow",
+    image: "/bouquets/white-vow.jpg",
     name: { uk: "Біла обітниця", en: "White Vow" },
     description: {
       uk: "Букет нареченої: білі півонії, кремові троянди, гіпсофіла. Збираємо за день до церемонії.",
@@ -153,6 +161,7 @@ export const SEED_PRODUCTS: Product[] = [
   },
   {
     id: "blush-whisper",
+    image: "/bouquets/blush-whisper.jpg",
     name: { uk: "Рожевий шепіт", en: "Blush Whisper" },
     description: {
       uk: "Пудрові троянди та ніжні ранункулюси з евкаліптом. Ніжність без зайвих слів.",
@@ -172,6 +181,7 @@ export const SEED_PRODUCTS: Product[] = [
   },
   {
     id: "field-notes",
+    image: "/bouquets/field-notes.jpg",
     name: { uk: "Польові нотатки", en: "Field Notes" },
     description: {
       uk: "Ромашки, лаванда і гіпсофіла в крафті. Букет, ніби зібраний на прогулянці.",

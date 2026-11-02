@@ -14,7 +14,7 @@ const uk = {
     lead: "Квіти приходять до нас із нічного ринку о четвертій. До світанку флористи збирають з них букети, а кур'єр привозить їх за дві години по всьому місту.",
     primary: "Обрати букет",
     secondary: "Зібрати свій",
-    replay: "Розпустити ще раз",
+    photoAlt: "Букет з півоній, троянд і гортензії в сливовому пакуванні на тлі нічного місяця",
   },
   home: {
     popularTitle: "Що замовляють найчастіше",
@@ -23,6 +23,7 @@ const uk = {
     builderTitle: "Зберіть букет зі своїх улюблених квітів",
     builderText: "Оберіть квіти, їхній колір і кількість, додайте пакування і стрічку. Ви одразу бачите, як виглядатиме букет і скільки він коштує.",
     builderCta: "Відкрити конструктор",
+    builderPhotoAlt: "Квіти для авторського букета, розкладені на оксамитовому столі флориста",
     stepsTitle: "Як ми працюємо",
     steps: [
       { title: "Ви обираєте букет", text: "У каталозі або в конструкторі. Вказуєте адресу, дату й зручний двогодинний інтервал." },
@@ -190,7 +191,7 @@ const uk = {
     hidden: "Прихований",
   },
   footer: {
-    rights: "Демонстраційний проєкт. Квіти намальовані, але дуже стараються.",
+    rights: "Демонстраційний проєкт: замовлення не передаються в магазин, а фото букетів згенеровані.",
     contacts: "Контакти",
     shop: "Магазин",
     admin: "Для власника",
@@ -218,7 +219,7 @@ const en: Dictionary = {
     lead: "Our flowers arrive from the night market at four. Florists arrange them before dawn, and couriers deliver anywhere in the city within two hours.",
     primary: "Choose a bouquet",
     secondary: "Build your own",
-    replay: "Bloom again",
+    photoAlt: "A bouquet of peonies, roses and hydrangea in plum wrapping against a night moon",
   },
   home: {
     popularTitle: "Most ordered",
@@ -227,6 +228,7 @@ const en: Dictionary = {
     builderTitle: "Build a bouquet from the flowers they love",
     builderText: "Pick flowers, colours and stem counts, add a wrap and a ribbon. You see what the bouquet looks like and what it costs as you go.",
     builderCta: "Open the builder",
+    builderPhotoAlt: "Flowers for a custom bouquet laid out on a florist's velvet table",
     stepsTitle: "How it works",
     steps: [
       { title: "You choose a bouquet", text: "From the shop or the builder. Add the address, the date and a two-hour window." },
@@ -394,7 +396,7 @@ const en: Dictionary = {
     hidden: "Hidden",
   },
   footer: {
-    rights: "A demo project. The flowers are drawn, but they try very hard.",
+    rights: "A demo project: orders aren't sent to a shop, and the bouquet photos are generated.",
     contacts: "Contacts",
     shop: "Shop",
     admin: "For the owner",

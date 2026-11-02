@@ -99,7 +99,12 @@ export const useShop = create<ShopState & ShopActions>()(
     }),
     {
       name: "nocturne-shop",
-      version: 1,
+      version: 2,
+      // v2 added photos to the catalog: visitors with a saved v1 catalog get the new one
+      migrate: (persisted, version) => {
+        const state = persisted as Partial<ShopState>;
+        return version < 2 ? { ...state, products: SEED_PRODUCTS } : state;
+      },
       storage: createJSONStorage(() => localStorage),
       skipHydration: true,
       partialize: ({ locale, products, cart, favorites, orders }) => ({ locale, products, cart, favorites, orders }),
