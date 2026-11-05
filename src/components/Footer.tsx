@@ -151,6 +151,25 @@ export const Footer = () => {
           {brand.name[locale]}
         </span>
       </div>
+
+      <div className="relative border-t border-moon/10">
+        <div className="mx-auto flex max-w-[1400px] flex-col gap-2 px-4 py-6 text-[13px] text-mist sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-10">
+          <p>
+            © {brand.foundedYear} {brand.name[locale]}
+          </p>
+          <p>
+            {t.footer.madeBy}{" "}
+            <a
+              href={brand.developer.url}
+              target="_blank"
+              rel="noreferrer"
+              className="text-moon underline decoration-moon/25 underline-offset-4 transition-colors hover:text-accent hover:decoration-accent"
+            >
+              {brand.developer.name}
+            </a>
+          </p>
+        </div>
+      </div>
     </footer>
   );
 };

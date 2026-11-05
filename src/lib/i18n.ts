@@ -229,6 +229,7 @@ const uk = {
     contacts: "Контакти",
     shop: "Магазин",
     admin: "Для власника",
+    madeBy: "Розробка сайту:",
   },
   common: {
     currencyNote: "",
@@ -468,6 +469,7 @@ const en: Dictionary = {
     contacts: "Contacts",
     shop: "Shop",
     admin: "For the owner",
+    madeBy: "Website by",
   },
   common: {
     currencyNote: "",
